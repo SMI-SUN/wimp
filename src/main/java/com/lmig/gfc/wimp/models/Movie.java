@@ -14,14 +14,19 @@ import javax.persistence.Id;
 public class Movie {
 	
 	
-public Movie(Long id, String title, Date releaseDate, Long budget, String distributor) {
+public Movie(String title, Date releaseDate, Long budget, String distributor) {
 		super();
-		this.id = id;
+// 		this.id = id;
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.budget = budget;
 		this.distributor = distributor;
 	}
+
+
+public Movie() {
+	
+}
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)

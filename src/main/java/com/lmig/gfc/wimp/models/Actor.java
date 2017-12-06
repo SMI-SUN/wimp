@@ -11,14 +11,17 @@ import javax.persistence.Id;
 @Entity
 public class Actor {
 	
-public Actor(Long id, String firstName, String lastName, Long activeSinceYear, Date brithDate) {
+public Actor(String firstName, String lastName, Long activeSinceYear, Date brithDate) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.activeSinceYear = activeSinceYear;
 		this.brithDate = brithDate;
 	}
+
+public Actor () {
+	
+}
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
