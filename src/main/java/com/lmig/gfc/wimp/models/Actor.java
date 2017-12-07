@@ -11,12 +11,12 @@ import javax.persistence.Id;
 @Entity
 public class Actor {
 	
-public Actor(String firstName, String lastName, Long activeSinceYear, Date brithDate) {
+public Actor(String firstName, String lastName, Long activeSinceYear, Date birthDate) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.activeSinceYear = activeSinceYear;
-		this.brithDate = brithDate;
+		this.birthDate = birthDate;
 	}
 
 public Actor () {
@@ -37,7 +37,7 @@ public Actor () {
 	private Long activeSinceYear;
 
 @Column(nullable = true)
-private Date brithDate;
+private Date birthDate;
 
 public Long getId() {
 	return id;
@@ -71,12 +71,12 @@ public void setActiveSinceYear(Long activeSinceYear) {
 	this.activeSinceYear = activeSinceYear;
 }
 
-public Date getBrithDate() {
-	return brithDate;
+public Date getbirthDate() {
+	return birthDate;
 }
 
-public void setBrithDate(Date brithDate) {
-	this.brithDate = brithDate;
+public void setbirthDate(Date birthDate) {
+	this.birthDate = birthDate;
 }
 
 }
