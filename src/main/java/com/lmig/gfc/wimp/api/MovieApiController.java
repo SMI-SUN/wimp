@@ -31,9 +31,7 @@ public class MovieApiController {
 
 	@GetMapping("")
 	public List<Movie> getAll() {
-
 		return movieRepository.findAll();
-
 	}
 
 	@PostMapping("")
@@ -41,57 +39,32 @@ public class MovieApiController {
 	public Movie create(@RequestBody Movie movie) {
 		return movieRepository.save(movie);
 	}
-	
+
 	@GetMapping("{id}")
-	 public Movie getOne(@PathVariable Long id) {
+	public Movie getOne(@PathVariable Long id) {
 		return movieRepository.findOne(id);
-		
+
 	}
-	
+
 	@PutMapping("{id}")
-	 public Movie update(@RequestBody Movie movie,  @PathVariable Long id) {
-		movie.setId(id);;
+	public Movie update(@RequestBody Movie movie, @PathVariable Long id) {
+		movie.setId(id);
 		return movieRepository.save(movie);
-		 
-		
+
 	}
-	
+
 	@DeleteMapping("{id}")
-	 public Movie delete(@PathVariable Long id) {
+	public Movie delete(@PathVariable Long id) {
 		// gets movie from db so i can return it later
-		 
+
 		Movie movie = movieRepository.findOne(id);
-		//delete dog from db, in this case we are setting the value in the array to null
+		// delete movie from db, in this case we are setting the value in the array to
+		// null
 		movieRepository.delete(id);
-		
-		// return the dog i just deleted
-		
-	  return movie;
-		
-		
+
+		// return the movie i just deleted
+		return movie;
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

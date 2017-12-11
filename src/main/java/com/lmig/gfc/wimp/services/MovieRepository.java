@@ -10,9 +10,10 @@ import com.lmig.gfc.wimp.models.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-
-	 
+	List<Movie> findByTitleIgnoringCase(String title);
+	List<Movie> findByDistributorIgnoringCase(String distributor);
 		
 	}
+
 
 

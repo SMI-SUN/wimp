@@ -1,82 +1,111 @@
 package com.lmig.gfc.wimp.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Actor {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
-public Actor(String firstName, String lastName, Long activeSinceYear, Date birthDate) {
-		super();
+	@JsonIgnore  
+	@ManyToMany(mappedBy = "actors")
+	private List<Movie> movies;
+	
+	
+	@OneToMany(mappedBy = "actor")
+	private List<Award> awards;
+	
+	// We need one-to-many annotation mapped by actor
+	// With a private list of awards
+
+	@Column(length = 75, nullable = true)
+	private String firstName;
+
+	@Column(length = 75, nullable = true)
+	private String lastName;
+
+	@Column(nullable = true)
+	private Long activeSinceYear;
+
+	@Column(nullable = true)
+	private Date birthDate;
+	
+	public Actor(String firstName, String lastName, Long activeSinceYear, Date birthDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.activeSinceYear = activeSinceYear;
 		this.birthDate = birthDate;
 	}
 
-public Actor () {
-	
-}
+	public Actor() {}
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-@Column(length=75, nullable = true)
-	private String firstName;
+	public Long getId() {
+		return id;
+	}
 
-@Column(length=75, nullable = true)
-	private String lastName;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-@Column(nullable = true)
-	private Long activeSinceYear;
+	public String getFirstName() {
+		return firstName;
+	}
 
-@Column(nullable = true)
-private Date birthDate;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-public Long getId() {
-	return id;
-}
+	public String getLastName() {
+		return lastName;
+	}
 
-public void setId(Long id) {
-	this.id = id;
-}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-public String getFirstName() {
-	return firstName;
-}
+	public Long getActiveSinceYear() {
+		return activeSinceYear;
+	}
 
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
-}
+	public void setActiveSinceYear(Long activeSinceYear) {
+		this.activeSinceYear = activeSinceYear;
+	}
 
-public String getLastName() {
-	return lastName;
-}
+	public List<Movie> getMovies() {
+		return movies;
+	}
 
-public void setLastName(String lastName) {
-	this.lastName = lastName;
-}
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
 
-public Long getActiveSinceYear() {
-	return activeSinceYear;
-}
+	public Date getBirthDate() {
+		return birthDate;
+	}
 
-public void setActiveSinceYear(Long activeSinceYear) {
-	this.activeSinceYear = activeSinceYear;
-}
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 
-public Date getbirthDate() {
-	return birthDate;
-}
+	public List<Award> getAwards() {
+		return awards;
+	}
 
-public void setbirthDate(Date birthDate) {
-	this.birthDate = birthDate;
-}
+	public void setAwards(List<Award> awards) {
+		this.awards = awards;
+	}
 
 }
